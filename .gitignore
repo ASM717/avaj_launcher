@@ -1,3 +1,5 @@
 /.idea/
 /avaj_launcher.iml
 .DS_Store
+/out/
+/avaj_new.iml
