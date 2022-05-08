@@ -1,6 +1,6 @@
 package amuriel.school21.flyable;
 
-import amuriel.school21.weather.WeatherTower;
+import amuriel.school21.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
     protected WeatherTower weatherTower;
@@ -26,7 +26,7 @@ public class JetPlane extends Aircraft implements Flyable {
                 logWeatherMessage("I'm a jet, its foggy.");
                 break;
             case "SNOW":
-                coordinateDeltas(0, 0, 7);
+                coordinateDeltas(0, 0, -7);
                 logWeatherMessage("I'm a jet, its snowing.");
                 break;
             default:
@@ -49,7 +49,7 @@ public class JetPlane extends Aircraft implements Flyable {
     }
 
     @Override
-    public void setType(){
+    public void setType() {
         this.type = "JetPlane";
     }
 }

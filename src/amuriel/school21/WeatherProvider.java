@@ -1,4 +1,4 @@
-package amuriel.school21.weather;
+package amuriel.school21;
 
 import amuriel.school21.flyable.Coordinates;
 
@@ -17,7 +17,9 @@ public class WeatherProvider {
 
     public String getCurrentWeather(Coordinates coordinates) {
         int id = Math.abs(coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude());
-//        seed += new Random().nextInt(100);
         return weather[id % 4];
+//        Random rand = new Random();
+//        int randInt = rand.nextInt(4);
+//        return(weather[randInt]);
     }
 }

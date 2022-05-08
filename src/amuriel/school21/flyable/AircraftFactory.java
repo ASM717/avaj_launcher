@@ -5,11 +5,11 @@ public abstract class AircraftFactory {
         Coordinates coordinates = new Coordinates(longitude, latitude, height);
         switch(type){
             case "Helicopter":
-                return (new Helicopter(name, coordinates));
+                return new Helicopter(name, coordinates);
             case "JetPlane":
-                return (new JetPlane(name, coordinates));
+                return new JetPlane(name, coordinates);
             case "Baloon":
-                return (new Baloon(name, coordinates));
+                return new Baloon(name, coordinates);
             default:
                 return null;
         }
