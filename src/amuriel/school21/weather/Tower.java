@@ -1,5 +1,6 @@
 package amuriel.school21.weather;
 
+import amuriel.school21.Logger;
 import amuriel.school21.flyable.Flyable;
 
 import java.util.ArrayList;
@@ -11,14 +12,14 @@ public abstract class Tower {
     public void register(Flyable flyable) {
         if (!observers.contains(flyable)) {
             observers.add(flyable);
-            System.out.println("Tower says: " + flyable.toString() + " registered to weather tower.");
+            Logger.getLogger().logMessage("Tower says: " + flyable.getMessagePrefix() + " registered to weather tower."); //maybe toString()
         }
     }
 
     public void unregister(Flyable flyable) {
         observers.remove(flyable);
 //        count--;
-        System.out.println("Tower says: " + flyable.toString() + " unregistered from weather tower.");
+        Logger.getLogger().logMessage("Tower says: " + flyable.getMessagePrefix() + " unregistered from weather tower.");
     }
 
     protected void conditionsChanged() {

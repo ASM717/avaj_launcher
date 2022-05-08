@@ -16,23 +16,25 @@ public class Baloon extends Aircraft implements Flyable {
     public void updateConditions() {
         String weather = this.weatherTower.getWeather(this.coordinates);
         switch (weather) {
-            case "RAIN" -> {
-                coordinateDeltas(0, 0, 5);
-                logWeatherMessage("I'm a baloon, its raining.");
-            }
-            case "FOG" -> {
-                coordinateDeltas(0, 0, 3);
-                logWeatherMessage("I'm a baloon, its foggy.");
-            }
-            case "SUN" -> {
+            case "SUN":
                 coordinateDeltas(2, 0, 4);
                 logWeatherMessage("I'm a baloon, its sunny.");
-            }
-            case "SNOW" -> {
+                break;
+            case "RAIN":
+                coordinateDeltas(0, 0, 5);
+                logWeatherMessage("I'm a baloon, its raining.");
+                break;
+            case "FOG":
+                coordinateDeltas(0, 0, 3);
+                logWeatherMessage("I'm a baloon, its foggy.");
+                break;
+            case "SNOW":
                 coordinateDeltas(0, 0, 15);
                 logWeatherMessage("I'm a baloon, its snowing.");
-            }
-            default -> logWeatherMessage("I'm a baloon, ... weather tower unresponsive");
+                break;
+            default:
+                logWeatherMessage("I'm a baloon, ... weather tower unresponsive");
+                break;
         }
 
         if (this.coordinates.getHeight() > 100)
@@ -48,6 +50,11 @@ public class Baloon extends Aircraft implements Flyable {
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
-        this.weatherTower.register(this);
+//        this.weatherTower.register(this);
+    }
+
+    @Override
+    public void setType(){
+        this.type = "Baloon";
     }
 }

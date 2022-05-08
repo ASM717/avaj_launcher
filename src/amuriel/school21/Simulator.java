@@ -33,8 +33,10 @@ public class Simulator {
                 flyable.registerTower(weatherTower);
             }
             for (int i = 0; i < cntTotalSim; ++i) {
+                Logger.getLogger().logMessage("\t\t*** Simulation #" + (cntTotalSim + 1) + " ***");
                 weatherTower.changeWeather();
             }
+            System.out.println("We have run " + cntTotalSim + " simulations.");
             Logger.getLogger().logMessagesToFile();
         } catch (ErrorException | IOException e) {
             e.printStackTrace();

@@ -13,23 +13,25 @@ public class Helicopter extends Aircraft implements Flyable {
     public void updateConditions() {
         String weather = this.weatherTower.getWeather(this.coordinates);
         switch (weather) {
-            case "SUN" -> {
+            case "SUN":
                 coordinateDeltas(10, 0, 2);
                 logWeatherMessage("I'm a helicopter, its sunny.");
-            }
-            case "RAIN" -> {
+                break;
+            case "RAIN":
                 coordinateDeltas(5, 0, 0);
                 logWeatherMessage("I'm a helicopter, its raining.");
-            }
-            case "FOG" -> {
+                break;
+            case "FOG":
                 coordinateDeltas(1, 0, 0);
                 logWeatherMessage("I'm a helicopter, its foggy.");
-            }
-            case "SNOW" -> {
+                break;
+            case "SNOW":
                 coordinateDeltas(10, 5, 0);
                 logWeatherMessage("I'm a helicopter, its snowing.");
-            }
-            default -> logWeatherMessage("I'm a helicopter, ... weather tower unresponsive");
+                break;
+            default:
+                logWeatherMessage("I'm a helicopter, ... weather tower unresponsive");
+                break;
         }
         if (this.coordinates.getHeight() > 100)
             this.coordinates.setHeight(100);
@@ -44,6 +46,11 @@ public class Helicopter extends Aircraft implements Flyable {
     @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
-        this.weatherTower.register(this);
+//        this.weatherTower.register(this);
+    }
+
+    @Override
+    public void setType(){
+        this.type = "Helicopter";
     }
 }
