@@ -1,7 +1,6 @@
-package amuriel.school21;
+package amuriel.school21.weather;
 
 import amuriel.school21.flyable.Coordinates;
-import java.util.Random;
 
 public class WeatherProvider {
     private static WeatherProvider weatherProvider;

@@ -1,41 +1,37 @@
 package amuriel.school21;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Logger {
-    private static BufferedWriter writer;
+    public static ArrayList<String> messages = new ArrayList<>();
+    private static Logger logger = null;
 
-    Logger() {
-        try {
-            File file = new File("simulation.txt");
-            file.delete();
-            if (writer == null)
-                writer = new BufferedWriter(new FileWriter(file, true));
-        } catch (IOException e) {
-            System.out.println("ERROR: Simulation file can not be created.");
-        }
+    Logger(){}
+
+    public static Logger getLogger() {
+        if (logger == null)
+            logger = new Logger();
+        return logger;
     }
 
-    public static void addLine(String log) {
-        try {
-            writer.write(log);
-            writer.newLine();
-            writer.flush();
-        } catch (IOException e) {
-            System.out.println("ERROR: Simulation file can not be appended");
-        }
+    public void logMessage(String message) {
+        messages.add(message);
     }
 
-    public static void closeFile() {
-        try {
-            if (writer != null)
-                writer.close();
-        } catch (IOException ioe) {
-            System.out.println("ERROR: Simulation file can not be closed");
+    public void logMessagesToFile() {
+        BufferedWriter buffOut;
+        try{
+            buffOut = new BufferedWriter(new FileWriter("simulation.txt"));
+            for(String s : messages){
+                buffOut.write(s + '\n');
+                buffOut.flush();
+            }
+            buffOut.close();
+        } catch(IOException e) {
+            e.printStackTrace();
         }
     }
-
 }
