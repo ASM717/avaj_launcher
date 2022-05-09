@@ -1,6 +1,7 @@
 package amuriel.school21;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 public class Simulator {
     public static void main(String[] args) {
@@ -16,6 +17,8 @@ public class Simulator {
             Logger.getLogger().logMessagesToFile();
         } catch (ErrorException | IOException e) {
             System.out.println(e.getMessage());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }
 }

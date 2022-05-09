@@ -6,6 +6,7 @@ import amuriel.school21.flyable.Flyable;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 public class ParseFile {
     private WeatherTower weatherTower = new WeatherTower();
@@ -19,7 +20,7 @@ public class ParseFile {
         return weatherTower;
     }
 
-    public void parseScenario(String path) throws IOException, ErrorException {
+    public void parseScenario(String path) throws IOException, ErrorException, NoSuchAlgorithmException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         String line = bufferedReader.readLine();
         if (line == null)
@@ -42,9 +43,10 @@ public class ParseFile {
                     Integer.parseInt(line.split(" ")[3]),
                     Integer.parseInt(line.split(" ")[4])
             );
+//            System.out.println(line);
             weatherTower.register(flyable);
-            assert flyable != null;
             flyable.registerTower(weatherTower);
+
         }
         bufferedReader.close();
     }

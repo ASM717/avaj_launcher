@@ -32,7 +32,7 @@ public abstract class Aircraft {
     }
 
     public long nextId() {
-        return idCounter += 1;
+        return idCounter++;
     }
 
     public long getId() {
