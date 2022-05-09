@@ -22,14 +22,14 @@ public class Logger {
     }
 
     public void logMessagesToFile() {
-        BufferedWriter buffOut;
+        BufferedWriter bufferedWriter;
         try{
-            buffOut = new BufferedWriter(new FileWriter("simulation.txt"));
-            for(String s : messages){
-                buffOut.write(s + '\n');
-                buffOut.flush();
+            bufferedWriter = new BufferedWriter(new FileWriter("simulation.txt"));
+            for(String mes : messages){
+                bufferedWriter.write(mes + '\n');
+                bufferedWriter.flush();
             }
-            buffOut.close();
+            bufferedWriter.close();
         } catch(IOException e) {
             e.printStackTrace();
         }

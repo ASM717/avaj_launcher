@@ -7,19 +7,19 @@ import java.security.NoSuchAlgorithmException;
 public final class MD5Encryption {
 
     public static boolean checkEncrypt(String text, String hash) throws NoSuchAlgorithmException {
-        String myHash = encryptToMD5(text);
-        return myHash.equals(hash);
+        String md5 = encryptToMD5(text);
+        return md5.equals(hash);
     }
 
     private static String encryptToMD5(String text) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(text.getBytes());
-        byte[] digest = md.digest();
-        BigInteger no = new BigInteger(1, digest);
-        StringBuilder hashText = new StringBuilder(no.toString(16));
-        while (hashText.length() < 32) {
-            hashText.insert(0, "0");
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        md5.update(text.getBytes());
+        byte[] digest = md5.digest();
+        BigInteger bigInteger = new BigInteger(1, digest);
+        StringBuilder builder = new StringBuilder(bigInteger.toString(16));
+        while (builder.length() < 32) {
+            builder.insert(0, "0");
         }
-        return hashText.toString();
+        return builder.toString();
     }
 }

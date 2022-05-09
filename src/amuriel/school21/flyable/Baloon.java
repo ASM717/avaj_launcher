@@ -1,5 +1,6 @@
 package amuriel.school21.flyable;
 
+import amuriel.school21.Logger;
 import amuriel.school21.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
@@ -15,29 +16,29 @@ public class Baloon extends Aircraft implements Flyable {
         switch (weather) {
             case "SUN":
                 coordinateDeltas(2, 0, 4);
-                logWeatherMessage("I'm a baloon, its sunny.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a baloon, its sunny.");
                 break;
             case "RAIN":
                 coordinateDeltas(0, 0, -5);
-                logWeatherMessage("I'm a baloon, its raining.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a baloon, its raining.");
                 break;
             case "FOG":
                 coordinateDeltas(0, 0, -3);
-                logWeatherMessage("I'm a baloon, its foggy.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a baloon, its foggy.");
                 break;
             case "SNOW":
                 coordinateDeltas(0, 0, -15);
-                logWeatherMessage("I'm a baloon, its snowing.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a baloon, its snowing.");
                 break;
             default:
-                logWeatherMessage("I'm a baloon, ... weather tower unresponsive");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a baloon, ... weather tower unresponsive");
                 break;
         }
         if (this.coordinates.getHeight() > 100)
             this.coordinates.setHeight(100);
         if (this.coordinates.getHeight() < 0){
             this.coordinates.setHeight(0);
-            logWeatherMessage("landing.");
+            Logger.getLogger().logMessage(getMessagePrefix() + " landing.");
             this.weatherTower.unregister(this);
             this.weatherTower = null;
         }

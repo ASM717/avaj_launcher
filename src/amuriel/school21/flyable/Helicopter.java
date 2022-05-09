@@ -1,5 +1,6 @@
 package amuriel.school21.flyable;
 
+import amuriel.school21.Logger;
 import amuriel.school21.WeatherTower;
 
 public class Helicopter extends Aircraft implements Flyable {
@@ -15,29 +16,30 @@ public class Helicopter extends Aircraft implements Flyable {
         switch (weather) {
             case "SUN":
                 coordinateDeltas(10, 0, 2);
-                logWeatherMessage("I'm a helicopter, its sunny.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a helicopter, its sunny.");
                 break;
             case "RAIN":
                 coordinateDeltas(5, 0, 0);
-                logWeatherMessage("I'm a helicopter, its raining.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a helicopter, its raining.");
                 break;
             case "FOG":
                 coordinateDeltas(1, 0, 0);
-                logWeatherMessage("I'm a helicopter, its foggy.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a helicopter, its foggy.");
                 break;
             case "SNOW":
                 coordinateDeltas(0, 0, -12);
-                logWeatherMessage("I'm a helicopter, its snowing.");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a helicopter, its snowing.");
                 break;
             default:
-                logWeatherMessage("I'm a helicopter, ... weather tower unresponsive");
+                Logger.getLogger().logMessage(getMessagePrefix() + ": I'm a helicopter, ... weather tower unresponsive");
                 break;
         }
         if (this.coordinates.getHeight() > 100)
             this.coordinates.setHeight(100);
         if (this.coordinates.getHeight() < 0) {
             this.coordinates.setHeight(0);
-            logWeatherMessage("landing.");
+//            logWeatherMessage("landing.");
+            Logger.getLogger().logMessage(getMessagePrefix() + " landing.");
             this.weatherTower.unregister(this);
             this.weatherTower = null;
         }

@@ -27,6 +27,7 @@ public class ParseFile {
             throw new ErrorException("EXCEPTION: The scenario file could not be read or is empty.");
         if (!isNumber(line.split(" ")[0]))
             throw new ErrorException("EXCEPTION: The scenario file is in the wrong format.");
+
         try {
             cntTotalSim = Integer.parseInt(line.split(" ")[0]);
             if (cntTotalSim <= 0)
@@ -36,17 +37,19 @@ public class ParseFile {
         }
 
         while ((line = bufferedReader.readLine()) != null) {
-            Flyable flyable = AircraftFactory.newAircraft(
-                    line.split(" ")[0],
-                    line.split(" ")[1],
-                    Integer.parseInt(line.split(" ")[2]),
-                    Integer.parseInt(line.split(" ")[3]),
-                    Integer.parseInt(line.split(" ")[4])
-            );
-//            System.out.println(line);
-            weatherTower.register(flyable);
-            flyable.registerTower(weatherTower);
-
+            try {
+                Flyable flyable = AircraftFactory.newAircraft(
+                        line.split(" ")[0],
+                        line.split(" ")[1],
+                        Integer.parseInt(line.split(" ")[2]),
+                        Integer.parseInt(line.split(" ")[3]),
+                        Integer.parseInt(line.split(" ")[4])
+                );
+                weatherTower.register(flyable);
+                flyable.registerTower(weatherTower);
+            } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ErrorException e) {
+                throw new ErrorException("EXCEPTION: Wrong numbers in line");
+            }
         }
         bufferedReader.close();
     }
@@ -59,5 +62,3 @@ public class ParseFile {
         return true;
     }
 }
-
-
