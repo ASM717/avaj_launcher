@@ -18,17 +18,13 @@ public abstract class Aircraft {
         setMessagePrefix(getType() + "#" + getName() + "(" + getId() + ")");
     }
 
-    public void coordinateDeltas(int x, int y, int z) { //longitude, latitude, height
+    public void coordinateDeltas(int x, int y, int z) {
         if (x != 0)
             this.coordinates.setLatitude(this.coordinates.getLatitude() + x);
         if (y != 0)
             this.coordinates.setLongitude(this.coordinates.getLongitude() + y);
         if (z != 0)
             this.coordinates.setHeight(this.coordinates.getHeight() + z);
-    }
-
-    public void logWeatherMessage(String message){
-        Logger.getLogger().logMessage(getMessagePrefix() + ": " + message);
     }
 
     public long nextId() {
@@ -61,7 +57,7 @@ public abstract class Aircraft {
         this.coordinates = coordinates;
     }
 
-    public String getMessagePrefix() {
+    public String getPrefix() {
         return messagePrefix;
     }
 

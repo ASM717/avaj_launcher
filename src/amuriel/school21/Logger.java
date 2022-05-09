@@ -17,11 +17,11 @@ public class Logger {
         return logger;
     }
 
-    public void logMessage(String message) {
+    public void addLoggerLine(String message) {
         messages.add(message);
     }
 
-    public void logMessagesToFile() {
+    public void loggerToFile() {
         BufferedWriter bufferedWriter;
         try{
             bufferedWriter = new BufferedWriter(new FileWriter("simulation.txt"));

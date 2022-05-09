@@ -6,14 +6,6 @@ public class Coordinates {
     private int height;
 
     Coordinates(int longitude, int latitude, int height) {
-//        this.longitude = longitude;
-//        this.latitude = latitude;
-//        this.height = height;
-
-//        setLongitude(longitude);
-//        setLatitude(latitude);
-//        setHeight(height);
-
         if (height > 100)
             this.height = 100;
         else this.height = Math.max(height, 0);

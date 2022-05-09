@@ -5,5 +5,5 @@ import amuriel.school21.WeatherTower;
 public interface Flyable {
     void updateConditions();
     void registerTower(WeatherTower WeatherTower);
-    String getMessagePrefix();
+    String getPrefix();
 }
