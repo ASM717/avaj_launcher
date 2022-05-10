@@ -15,30 +15,30 @@ public class JetPlane extends Aircraft implements Flyable {
         String weather = this.weatherTower.getWeather(this.coordinates);
         switch (weather) {
             case "SUN":
-                coordinateDeltas(0, 10, 2);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a jet, its sunny.");
+                coordinatesFunc(0, 10, 2);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a jetplane, its sunny.");
                 break;
             case "RAIN":
-                coordinateDeltas(0, 5, 0);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a jet, its raining.");
+                coordinatesFunc(0, 5, 0);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a jetplane, its raining.");
                 break;
             case "FOG":
-                coordinateDeltas(0, 1, 0);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a jet, its foggy.");
+                coordinatesFunc(0, 1, 0);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a jetplane, its foggy.");
                 break;
             case "SNOW":
-                coordinateDeltas(0, 0, -7);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a jet, its snowing.");
+                coordinatesFunc(0, 0, -7);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a jetplane, its snowing.");
                 break;
             default:
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a jet, ... weather tower unresponsive");
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a jetplane, weather tower unresponsive");
                 break;
         }
         if (this.coordinates.getHeight() > 100)
             this.coordinates.setHeight(100);
         if (this.coordinates.getHeight() < 0){
             this.coordinates.setHeight(0);
-            Logger.getLogger().addLoggerLine(getPrefix() + " landing.");
+            Logger.getLogger().addLoggerLine(prefix() + " landing.");
             this.weatherTower.unregister(this);
             this.weatherTower = null;
         }

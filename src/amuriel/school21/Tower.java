@@ -10,13 +10,13 @@ public abstract class Tower {
     public void register(Flyable flyable) {
         if (!observers.contains(flyable)) {
             observers.add(flyable);
-            Logger.getLogger().addLoggerLine("Tower says: " + flyable.getPrefix() + " registered to weather tower.");
+            Logger.getLogger().addLoggerLine("Tower says: " + flyable.prefix() + " registered to weather tower.");
         }
     }
 
     public void unregister(Flyable flyable) {
         observers.remove(flyable);
-        Logger.getLogger().addLoggerLine("Tower says: " + flyable.getPrefix() + " unregistered from weather tower.");
+        Logger.getLogger().addLoggerLine("Tower says: " + flyable.prefix() + " unregistered from weather tower.");
     }
 
     protected void conditionsChanged() {

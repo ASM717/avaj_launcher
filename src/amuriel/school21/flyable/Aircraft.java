@@ -1,14 +1,12 @@
 package amuriel.school21.flyable;
 
-import amuriel.school21.Logger;
-
 public abstract class Aircraft {
     protected long id;
     protected String name;
     protected String type;
     protected Coordinates coordinates;
     protected String messagePrefix;
-    private static long idCounter = 0L; //1
+    private static long idCounter = 1L;
 
     protected Aircraft(String name, Coordinates coordinates) {
         setName(name);
@@ -18,7 +16,7 @@ public abstract class Aircraft {
         setMessagePrefix(getType() + "#" + getName() + "(" + getId() + ")");
     }
 
-    public void coordinateDeltas(int x, int y, int z) {
+    public void coordinatesFunc(int x, int y, int z) {
         if (x != 0)
             this.coordinates.setLatitude(this.coordinates.getLatitude() + x);
         if (y != 0)
@@ -57,7 +55,7 @@ public abstract class Aircraft {
         this.coordinates = coordinates;
     }
 
-    public String getPrefix() {
+    public String prefix() {
         return messagePrefix;
     }
 

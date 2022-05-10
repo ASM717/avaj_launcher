@@ -27,11 +27,10 @@ public class ParseFile {
             throw new ErrorException("EXCEPTION: The scenario file could not be read or is empty.");
         if (!isNumber(line.split(" ")[0]))
             throw new ErrorException("EXCEPTION: The scenario file is in the wrong format.");
-
         try {
             cntTotalSim = Integer.parseInt(line.split(" ")[0]);
             if (cntTotalSim <= 0)
-                throw new ErrorException("EXCEPTION: The simulation count is invalid.");
+                throw new ErrorException("EXCEPTION: The simulation count is not valid.");
         } catch (NumberFormatException e) {
             throw new ErrorException("EXCEPTION: Wrong simulations count.");
         }
@@ -47,8 +46,12 @@ public class ParseFile {
                 );
                 weatherTower.register(flyable);
                 flyable.registerTower(weatherTower);
-            } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ErrorException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 throw new ErrorException("EXCEPTION: Wrong numbers in line");
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException(e.getMessage());
+            } catch (ErrorException e) {
+                throw new ErrorException("EXCEPTION: Unknown type or wrong md5 hash");
             }
         }
         bufferedReader.close();

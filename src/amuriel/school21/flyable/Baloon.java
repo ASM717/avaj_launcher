@@ -15,30 +15,30 @@ public class Baloon extends Aircraft implements Flyable {
         String weather = this.weatherTower.getWeather(this.coordinates);
         switch (weather) {
             case "SUN":
-                coordinateDeltas(2, 0, 4);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a baloon, its sunny.");
+                coordinatesFunc(2, 0, 4);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a baloon, its sunny.");
                 break;
             case "RAIN":
-                coordinateDeltas(0, 0, -5);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a baloon, its raining.");
+                coordinatesFunc(0, 0, -5);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a baloon, its raining.");
                 break;
             case "FOG":
-                coordinateDeltas(0, 0, -3);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a baloon, its foggy.");
+                coordinatesFunc(0, 0, -3);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a baloon, its foggy.");
                 break;
             case "SNOW":
-                coordinateDeltas(0, 0, -15);
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a baloon, its snowing.");
+                coordinatesFunc(0, 0, -15);
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a baloon, its snowing.");
                 break;
             default:
-                Logger.getLogger().addLoggerLine(getPrefix() + ": I'm a baloon, ... weather tower unresponsive");
+                Logger.getLogger().addLoggerLine(prefix() + ": I'm a baloon, weather tower unresponsive");
                 break;
         }
         if (this.coordinates.getHeight() > 100)
             this.coordinates.setHeight(100);
         if (this.coordinates.getHeight() < 0){
             this.coordinates.setHeight(0);
-            Logger.getLogger().addLoggerLine(getPrefix() + " landing.");
+            Logger.getLogger().addLoggerLine(prefix() + " landing.");
             this.weatherTower.unregister(this);
             this.weatherTower = null;
         }
